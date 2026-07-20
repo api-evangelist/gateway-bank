@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Gateway Bank CDR Banking API
+  version: 1.0.0
+extends: openapi/gateway-bank-cds-banking-products-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: gateway-bank
+    x-apievangelist-deployment: Gateway Bank Ltd (Australian ADI, CDR data holder)
+    x-apievangelist-public-base-url: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
+    x-apievangelist-spec-provenance: Shared DSB Consumer Data Standards contract, not
+      bank-proprietary. Only the two Product Reference Data operations are publicly
+      callable at this deployment; all other operations require CDR accreditation.
+    x-apievangelist-prd-confirmed: '2026-07-20'
+    x-apievangelist-prd-version: 5
+- target: $.servers
+  update:
+  - description: Gateway Bank public CDR Product Reference Data (unauthenticated)
+    url: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
+- target: $.paths['/banking/products'].get
+  update:
+    x-apievangelist-access: public-unauthenticated
+    x-apievangelist-live: true
+- target: $.paths['/banking/products/{productId}'].get
+  update:
+    x-apievangelist-access: public-unauthenticated

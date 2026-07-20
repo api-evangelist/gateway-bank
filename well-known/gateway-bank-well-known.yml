@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: live probe of /.well-known/ on apis.yml + OpenAPI hosts (2026-07-20)
+hosts:
+- host: https://www.gatewaybank.com.au
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: gateway-bank-openid-configuration.json
+    note: OpenID Connect discovery for the corporate-website member login (Umbraco
+      Delivery API member auth). NOT the CDR/Open-Banking authorization server.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: gateway-bank-oauth-authorization-server.json
+    note: RFC 8414 metadata; identical content to the openid-configuration document
+      (Umbraco member auth).
+  - path: /.well-known/jwks
+    status: 200
+    file: gateway-bank-jwks.json
+    note: JSON Web Key Set referenced by the member-auth OIDC discovery document.
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://public.cdr-api.gatewaybank.com.au
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  note: The public CDR host serves only the unauthenticated CDS Product Reference
+    Data endpoints; consumer-data OAuth/OIDC discovery lives behind the CDR Register,
+    not on this public host.

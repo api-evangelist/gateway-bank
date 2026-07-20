@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/gateway-bank-cds-banking-products-openapi.yml + DSB Consumer Data Standards
+docs: https://consumerdatastandardsaustralia.github.io/standards/#http-headers
+note: Cross-cutting request/response semantics defined by the DSB Consumer Data
+  Standards, which this data holder implements. Cross-links errors/, lifecycle/,
+  authentication/, scopes/.
+authentication:
+  style: none for PRD; OpenID Connect / FAPI (CDR security profile) for consumer data
+  ref: authentication/gateway-bank-authentication.yml
+versioning:
+  style: header
+  request_header: x-v (mandatory; positive integer, highest supported endpoint version)
+  min_version_header: x-min-v (optional; lower bound for negotiation)
+  on_unsupported: HTTP 406 Not Acceptable (x-v 3 rejected, x-v 5 accepted on
+    2026-07-20 against /banking/products)
+  response_header: x-v (echoes the served version)
+  ref: lifecycle/gateway-bank-lifecycle.yml
+pagination:
+  style: page-number
+  params:
+    page: 1-based page number (default 1)
+    page-size: records per page (default 25)
+  response_fields:
+    meta.totalRecords: total record count
+    meta.totalPages: total page count
+    links.self: current page
+    links.first: first page
+    links.prev: previous page (absent on first)
+    links.next: next page (absent on last)
+    links.last: last page
+  observed: 147 products across 30 pages on GET /banking/products (2026-07-20)
+idempotency:
+  supported: false
+  note: The public PRD surface is read-only (GET only); the CDS banking surface exposes
+    no write operations, so there is no idempotency-key contract.
+request_tracing:
+  header: x-fapi-interaction-id
+  note: FAPI interaction id echoed on consumer-data responses for correlation.
+error_envelope:
+  format: cds-error-v2
+  shape: '{ errors: [ { code, title, detail, meta? } ] }'
+  ref: errors/gateway-bank-problem-types.yml
+content_type: application/json
+rate_limit_signaling:
+  documented: false
+  note: The DSB standards define traffic-thresholds/NFRs for data holders but this
+    public host advertises no per-response rate-limit headers.

@@ -1,0 +1,30 @@
+# Gateway Bank
+
+> Gateway Bank Ltd is a 100% customer-owned Australian mutual bank (APRA-regulated ADI, ABN 47 087 650 093) headquartered in Sydney. As an active ADI it is a designated data holder under Australia's Consumer Data Right (CDR / Open Banking) and exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards. It runs no broader self-serve developer portal.
+
+## APIs
+
+- [Gateway Bank CDR Product Reference Data API](https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/): Public, unauthenticated CDS Product Reference Data. Base URL https://public.cdr-api.gatewaybank.com.au/cds-au/v1. Confirmed live 2026-07-20 (x-v 5, 147 products).
+
+## Specs
+
+- [CDS Banking OpenAPI (shared DSB standard, harvested)](openapi/gateway-bank-cds-banking-products-openapi.yml): OpenAPI 3.0.3, CDR Banking API v1.36.0.
+
+## Artifacts
+
+- [Authentication](authentication/gateway-bank-authentication.yml): none for PRD; OIDC/FAPI (CDR security profile) for consumer data.
+- [OAuth scopes](scopes/gateway-bank-scopes.yml): CDR banking authorisation scopes.
+- [Conventions](conventions/gateway-bank-conventions.yml): x-v versioning, page/page-size pagination, CDS error envelope.
+- [Error catalog](errors/gateway-bank-problem-types.yml): CDS ErrorV2 conditions for the PRD operations.
+- [Conformance](conformance/gateway-bank-conformance.yml): CDR / OAuth2 / OIDC / FAPI conformance.
+- [Lifecycle](lifecycle/gateway-bank-lifecycle.yml): header-per-endpoint versioning and deprecation.
+- [MCP tools (candidate)](mcp/gateway-bank-mcp.yml): the two public PRD operations as candidate tools.
+- [Data model](data-model/gateway-bank-data-model.yml): CDS banking entity graph.
+- [Well-known](well-known/gateway-bank-well-known.yml): corporate-site OIDC discovery + JWKS.
+- [Agent skill: browse products](skills/gateway-bank-browse-products.md)
+
+## Docs
+
+- [Consumer Data Right (CDR) information](https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/)
+- [DSB Consumer Data Standards](https://consumerdatastandardsaustralia.github.io/standards/)
+- [Website](https://www.gatewaybank.com.au/)

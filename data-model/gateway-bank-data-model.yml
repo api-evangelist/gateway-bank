@@ -1,0 +1,66 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/gateway-bank-cds-banking-products-openapi.yml ($ref links + id-reference
+  fields)
+docs: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+note: Entity-relationship graph derived from the shared CDS Banking schemas. Only the
+  Product entity is publicly reachable; the rest require CDR accreditation.
+entities:
+- name: Product
+  id_field: productId
+  id_type: BankingProductId (data-holder specific, not ID-permanence bound)
+  public: true
+  operations: [listBankingProducts, getBankingProductDetail]
+- name: Account
+  id_field: accountId
+  id_type: BankingAccountId (ID-permanence)
+  operations: [listBankingAccounts, getBankingAccountDetail]
+- name: Balance
+  operations: [listBankingBalancesBulk, listBankingBalancesSpecificAccounts, getBankingBalance]
+- name: Transaction
+  id_field: transactionId
+  id_type: BankingTransactionId (ID-permanence)
+  operations: [listBankingTransactions, getBankingTransactionDetail]
+- name: DirectDebit
+  operations: [listDirectDebits, listDirectDebitsBulk, listDirectDebitsSpecificAccounts]
+- name: ScheduledPayment
+  id_field: scheduledPaymentId
+  id_type: BankingScheduledPaymentId (ID-permanence)
+  operations: [listScheduledPayments, listScheduledPaymentsBulk, listScheduledPaymentsSpecificAccounts]
+- name: Payee
+  id_field: payeeId
+  id_type: BankingPayeeId (ID-permanence)
+  operations: [listBankingPayees, getBankingPayeeDetail]
+- name: InstalmentPlan
+  id_field: instalmentPlanId
+  id_type: BankingInstalmentPlanId (ID-permanence)
+  operations: [listInstalmentPlans, listInstalmentPlansBulk]
+relationships:
+- from: Account
+  to: Product
+  type: belongs_to
+  via: productCategory / product reference
+- from: Balance
+  to: Account
+  type: belongs_to
+  via: accountId
+- from: Transaction
+  to: Account
+  type: belongs_to
+  via: accountId
+- from: DirectDebit
+  to: Account
+  type: belongs_to
+  via: accountId
+- from: ScheduledPayment
+  to: Account
+  type: belongs_to
+  via: accountId
+- from: ScheduledPayment
+  to: Payee
+  type: has_one
+  via: payeeReference
+- from: InstalmentPlan
+  to: Account
+  type: belongs_to
+  via: accountId

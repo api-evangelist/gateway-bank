@@ -53,6 +53,38 @@ apis:
     live on 2026-07-20 returning HTTP 200 with x-v 5 and 147 products across 30 pages
     from GET /banking/products; per-product detail is available at GET /banking/products/{productId}.
 common:
+- type: AgenticAccess
+  url: agentic-access/gateway-bank-agentic-access.yml
+- type: DomainSecurity
+  url: security/gateway-bank-domain-security.yml
+- type: Authentication
+  url: authentication/gateway-bank-authentication.yml
+- type: OAuthScopes
+  url: scopes/gateway-bank-scopes.yml
+- type: Conventions
+  url: conventions/gateway-bank-conventions.yml
+- type: ErrorCatalog
+  url: errors/gateway-bank-problem-types.yml
+- type: Conformance
+  url: conformance/gateway-bank-conformance.yml
+- type: Compliance
+  url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+- type: Lifecycle
+  url: lifecycle/gateway-bank-lifecycle.yml
+- type: Deprecation
+  url: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+- type: WellKnown
+  url: well-known/gateway-bank-well-known.yml
+- type: MCPServer
+  url: mcp/gateway-bank-mcp.yml
+- type: AgentSkill
+  url: skills/gateway-bank-browse-products.md
+- type: DataModel
+  url: data-model/gateway-bank-data-model.yml
+- type: Overlay
+  url: overlays/gateway-bank-cds-banking-products-overlay.yaml
+- type: LLMsTxt
+  url: llms/gateway-bank-llms.txt
 - type: Website
   url: https://www.gatewaybank.com.au/
 - type: Documentation

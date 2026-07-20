@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: DSB Consumer Data Standards versioning model + openapi + review.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+versioning:
+  scheme: header-per-endpoint
+  header: x-v
+  min_header: x-min-v
+  current_prd_version: 5
+  note: Each endpoint is versioned independently via the x-v request header; the
+    server responds with the highest supported version between x-min-v and x-v and
+    returns HTTP 406 when no requested version is supported. GET /banking/products
+    served x-v 5 on 2026-07-20.
+deprecation:
+  policy_url: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+  mechanism: version-negotiation
+  sunset_header: false
+  note: The Consumer Data Standards define a formal endpoint-version retirement
+    process (obsolete versions are listed per operation in the shared spec and are
+    withdrawn on the DSB Future Dated Obligations schedule). Retirement is signalled
+    by 406 Not Acceptable on unsupported x-v, not by RFC 8594 Sunset headers.
+  obsolete_versions_documented: true
+sla:
+  documented: false
+  note: Non-functional requirements (availability, traffic thresholds) for CDR data
+    holders are set by the DSB standards; the bank publishes no separate SLA page.
+status_page: null
+deprecated_operations: []

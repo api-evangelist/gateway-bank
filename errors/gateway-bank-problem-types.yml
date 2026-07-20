@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/gateway-bank-cds-banking-products-openapi.yml (4xx responses on the
+  public PRD operations)
+format: cds-error-v2
+envelope: '{ errors: [ { code, title, detail, meta? } ] }'
+docs: https://consumerdatastandardsaustralia.github.io/standards/#error-codes
+note: The Consumer Data Standards use their own error envelope (ErrorV2 with a URN
+  code, title, detail and optional meta), NOT RFC 9457 application/problem+json. The
+  conditions below are the ones the CDS mandates for the two public Product Reference
+  Data operations; the exact URN values are defined in the linked CDS error-code
+  registry.
+problems:
+- status: 400
+  condition: Invalid Field
+  source_operation: openapi/gateway-bank-cds-banking-products-openapi.yml#listBankingProducts
+- status: 400
+  condition: Missing Required Field
+- status: 400
+  condition: Missing Required Header
+- status: 400
+  condition: Invalid Version
+- status: 400
+  condition: Invalid Date
+- status: 400
+  condition: Invalid Page Size
+- status: 406
+  condition: Unsupported Version
+  detail: Returned when none of the requested endpoint versions (x-v / x-min-v) is
+    supported. Confirmed live on 2026-07-20 (x-v 3 -> HTTP 406, x-v 5 -> HTTP 200).
+  source_operation: openapi/gateway-bank-cds-banking-products-openapi.yml#listBankingProducts
+- status: 422
+  condition: Invalid Page
+  detail: Requested page is out of range for the result set.
+  source_operation: openapi/gateway-bank-cds-banking-products-openapi.yml#listBankingProducts
+- status: 404
+  condition: Invalid Resource (Unavailable Banking Product)
+  source_operation: openapi/gateway-bank-cds-banking-products-openapi.yml#getBankingProductDetail

@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+source: DSB Consumer Data Standards CDR security profile + openapi x-scopes + review.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+summary:
+  types: [none, oauth2, openIdConnect]
+  api_key_in: []
+  oauth2_flows: [authorizationCode]
+  note: Two distinct surfaces. The public Product Reference Data (PRD) endpoints are
+    deliberately UNAUTHENTICATED per the Consumer Data Standards (product data carries
+    no consumer information). All consumer-data endpoints (accounts, balances,
+    transactions, direct debits, scheduled payments, payees, instalment plans) are
+    gated by the CDR security profile, an OpenID Connect / FAPI 2.0 flow restricted
+    to ACCC-accredited Data Recipients operating against the CDR Register.
+surfaces:
+- name: public-prd
+  authentication: none
+  description: GET /banking/products and GET /banking/products/{productId} require no
+    credentials. Only the CDS version header (x-v) is mandatory.
+  operations: [listBankingProducts, getBankingProductDetail]
+- name: cdr-consumer-data
+  authentication: oauth2 + openIdConnect (FAPI)
+  profile: CDR security profile (FAPI 2.0 baseline)
+  flows:
+  - flow: authorizationCode
+    grant: authorization_code
+    features: [PAR, PKCE, private_key_jwt or MTLS client auth]
+    authorizationUrl: via the bank's CDR InfoSec endpoints published to the CDR Register
+    tokenUrl: via the bank's CDR InfoSec endpoints published to the CDR Register
+  eligibility: ACCC-accredited Data Recipients (ADR) only; not a self-serve developer
+    surface.
+  scopes_ref: scopes/gateway-bank-scopes.yml
+  operations:
+  - listBankingAccounts
+  - getBankingAccountDetail
+  - listBankingBalancesBulk
+  - listBankingBalancesSpecificAccounts
+  - getBankingBalance
+  - listBankingTransactions
+  - getBankingTransactionDetail
+  - listDirectDebits
+  - listDirectDebitsBulk
+  - listDirectDebitsSpecificAccounts
+  - listScheduledPayments
+  - listScheduledPaymentsBulk
+  - listScheduledPaymentsSpecificAccounts
+  - listInstalmentPlans
+  - listInstalmentPlansBulk
+  - listBankingPayees
+  - getBankingPayeeDetail
