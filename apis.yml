@@ -1,0 +1,64 @@
+aid: gateway-bank
+url: https://raw.githubusercontent.com/api-evangelist/gateway-bank/refs/heads/main/apis.yml
+name: Gateway Bank
+kind: company
+description: Gateway Bank Ltd is a 100% customer-owned Australian mutual bank headquartered
+  in Sydney, New South Wales. Founded in 1955 as Gateway Credit Union and rebranded
+  to Gateway Bank in 2018, it is an APRA-regulated Authorised Deposit-taking Institution
+  (ADI) serving more than 30,000 members with over one billion dollars in assets across
+  transaction and savings accounts, home, personal and car loans, reverse and commercial
+  mortgages, term deposits and Visa debit cards. As an active ADI, Gateway Bank is
+  a designated data holder under Australia's Consumer Data Right (CDR / Open Banking)
+  and exposes a public, unauthenticated Product Reference Data (PRD) API conforming
+  to the Data Standards Body Consumer Data Standards. Its registered CDR public base
+  URI is https://public.cdr-api.gatewaybank.com.au. The bank does not operate a broader
+  self-serve developer portal beyond its CDR obligations.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial
+- Banks
+- Open Banking
+- CDR
+- Consumer Banking
+- Mutual Bank
+- Customer Owned
+- Australia
+- Product Reference Data
+created: '2026-07-20'
+modified: '2026-07-20'
+specificationVersion: '0.19'
+apis:
+- aid: gateway-bank:gateway-bank-cdr-product-reference-data-api
+  name: Gateway Bank CDR Product Reference Data API
+  tags:
+  - CDR
+  - Open Banking
+  - Product Reference Data
+  - Banking Products
+  - Consumer Data Right
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
+  properties:
+  - url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+    type: APIReference
+  - url: openapi/gateway-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Public, unauthenticated Consumer Data Right (CDR) Product Reference Data
+    endpoints exposing Gateway Bank's retail banking products - transaction and savings
+    accounts, residential mortgages, personal and car loans, and term deposits - in
+    the machine-readable format defined by the DSB Consumer Data Standards. Confirmed
+    live on 2026-07-20 returning HTTP 200 with x-v 5 and 147 products across 30 pages
+    from GET /banking/products; per-product detail is available at GET /banking/products/{productId}.
+common:
+- type: Website
+  url: https://www.gatewaybank.com.au/
+- type: Documentation
+  url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+- type: LinkedIn
+  url: https://au.linkedin.com/company/gateway-bank-ltd
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,89 @@
+aid: gateway-bank
+name: Gateway Bank
+review:
+  question: Does Gateway Bank expose a live, public CDR Product Reference Data API, and
+    does it run any broader public developer portal?
+  answer: true
+  date: '2026-07-20'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Gateway Bank Ltd, a 100% customer-owned Australian mutual bank (ADI, ABN
+    47 087 650 093), exposes a live, public, unauthenticated Consumer Data Right
+    (CDR / Open Banking) Product Reference Data (PRD) API as required of every
+    active ADI under Australia's Consumer Data Right. The bank's registered CDR
+    public base URI - confirmed from the ACCC CDR Register's Get Data Holder
+    Brands Summary endpoint - is https://public.cdr-api.gatewaybank.com.au. The
+    PRD product list was confirmed LIVE on 2026-07-20: GET
+    https://public.cdr-api.gatewaybank.com.au/cds-au/v1/banking/products returned
+    HTTP 200 with response header x-v: 5 and a JSON body containing a
+    data.products array and meta.totalRecords of 147 across 30 pages (categories
+    observed include TRANS_AND_SAVINGS_ACCOUNTS and RESIDENTIAL_MORTGAGES). The
+    endpoint enforces CDS version negotiation: requests with x-v: 3 were rejected
+    HTTP 406 (Header/UnsupportedVersion); x-v: 5 succeeded.
+
+    Beyond its CDR data-holder obligations, Gateway Bank runs NO broader public,
+    self-serve developer portal. developer.gatewaybank.com.au does not resolve
+    (DNS/connection failure). The bank's only developer-relevant public surface
+    is the consumer-facing CDR information page at
+    https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/.
+    The corporate website (https://www.gatewaybank.com.au/) is live but fronted by
+    Cloudflare bot protection, which returns HTTP 403 to non-browser clients; this
+    is edge protection, not evidence the pages are absent.
+
+    Authentication / authorization model: the Product Reference Data API is
+    deliberately PUBLIC and UNAUTHENTICATED per the Consumer Data Standards
+    (product data carries no consumer information). Access to CONSUMER data under
+    the CDR (accounts, transactions, payees) is not open - it is gated by the CDR
+    security profile, which is an OAuth2 / OpenID Connect FAPI-based flow
+    (Authorization Code + PAR/PKCE, private_key_jwt / MTLS client auth) restricted
+    to ACCC-accredited Data Recipients (ADRs) operating against the CDR Register.
+    That authenticated surface was not probed and is not part of this public
+    bootstrap.
+
+    Spec provenance: the OpenAPI harvested into
+    openapi/gateway-bank-cds-banking-products-openapi.yml is the SHARED Data
+    Standards Body (DSB) Consumer Data Standards "CDR Banking API" contract
+    (OpenAPI 3.0.3, info.version 1.36.0), captured verbatim from
+    consumerdatastandardsaustralia.github.io. It is the common CDS standard that
+    all Australian data holders implement - NOT a Gateway Bank-proprietary
+    specification. It includes the two public PRD operations (GET /banking/products,
+    GET /banking/products/{productId}) alongside the full authenticated banking
+    surface defined by the standard.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
+      documented: true
+      note: CDS Product Reference Data; confirmed HTTP 200 with x-v 5 on 2026-07-20.
+  cdrPrdConfirmed: true
+  cdrPublicBaseUri: https://public.cdr-api.gatewaybank.com.au
+  cdrProductsEndpoint: https://public.cdr-api.gatewaybank.com.au/cds-au/v1/banking/products
+  cdrObservedVersion: 5
+  cdrTotalProducts: 147
+  developerPortal: none
+  authModelConsumerData: OAuth2 / OIDC FAPI (CDR security profile), ADR-accredited only
+  specProvenance: DSB Consumer Data Standards shared standard (CDR Banking API 1.36.0), not bank-proprietary
+  endpointsConfirmed:
+    - GET https://public.cdr-api.gatewaybank.com.au/cds-au/v1/banking/products
+sources:
+  - url: https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary
+    type: Registry
+    note: ACCC CDR Register - returned Gateway Bank brand (id 298987af-3ead-eb11-a822-000d3a884a20, ABN 47087650093) with publicBaseUri https://public.cdr-api.gatewaybank.com.au.
+  - url: https://public.cdr-api.gatewaybank.com.au/cds-au/v1/banking/products
+    type: APIReference
+    note: Confirmed live 2026-07-20 - HTTP 200, x-v 5, 147 products across 30 pages; x-v 3 rejected HTTP 406.
+  - url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+    type: Documentation
+    note: Consumer-facing CDR / Open Banking information page (bank's only developer-relevant public page).
+  - url: https://consumerdatastandardsaustralia.github.io/standards/includes/swagger/cds_banking.json
+    type: OpenAPI
+    note: DSB Consumer Data Standards CDR Banking API (OpenAPI 3.0.3, v1.36.0) - shared standard harvested verbatim; source of the PRD operations.
+actions:
+  openapiPath: openapi/gateway-bank-cds-banking-products-openapi.yml
+  apisYmlUpdated: true
+  reason: |
+    Bootstrapped Gateway Bank identity and its one genuine public API surface: the
+    CDR Product Reference Data API, confirmed live. Harvested the shared DSB CDS
+    Banking OpenAPI verbatim (clearly noted as standard, not proprietary). No
+    broader developer portal exists to catalog.
