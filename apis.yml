@@ -191,6 +191,8 @@ common:
   url: https://www.gatewaybank.com.au/
 - type: Documentation
   url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+- type: TermsOfService
+  url: https://www.gatewaybank.com.au/important-information/terms-of-use/
 - type: LinkedIn
   url: https://au.linkedin.com/company/gateway-bank-ltd
 maintainers:
