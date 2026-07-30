@@ -16,7 +16,19 @@ description: Gateway Bank Ltd is a 100% customer-owned Australian mutual bank he
   registered CDR public base URI is https://public.cdr-api.gatewaybank.com.au. As a
   small customer-owned mutual, Gateway Bank does not operate a broader self-serve
   first-party developer portal beyond these CDR obligations.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/gateway-bank.png
 tags:
 - Financial
 - Banks
@@ -31,129 +43,167 @@ created: '2026-07-20'
 modified: '2026-07-21'
 specificationVersion: '0.19'
 apis:
-- aid: gateway-bank:gateway-bank-cdr-product-reference-data-api
-  name: Gateway Bank CDR Product Reference Data API
-  tags:
-  - CDR
-  - Open Banking
-  - Product Reference Data
-  - Banking Products
-  - Consumer Data Right
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: gateway-bank:gateway-bank-banking-account-balances-api
+  name: Gateway Bank Banking Account Balances API
+  description: Banking Account Balance endpoints
   humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
   baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
-  properties:
-  - url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
-    type: APIReference
-  - url: openapi/gateway-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Public, unauthenticated Consumer Data Right (CDR) Product Reference Data
-    endpoints exposing Gateway Bank's retail banking products - transaction and savings
-    accounts, residential mortgages, personal and car loans, and term deposits - in
-    the machine-readable format defined by the DSB Consumer Data Standards. Confirmed
-    live on 2026-07-20 returning HTTP 200 with x-v 5 and 147 products across 30 pages
-    from GET /banking/products; per-product detail is available at GET /banking/products/{productId}.
-- aid: gateway-bank:gateway-bank-cdr-accounts-balances-api
-  name: Gateway Bank CDR Accounts & Balances API
   tags:
-  - CDR
-  - Open Banking
-  - Accounts
-  - Balances
-  - Consumer Data Right
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
-  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Balances
   properties:
-  - url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
-    type: APIReference
-  - url: openapi/gateway-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized Consumer Data Right (CDR) banking endpoints exposing
-    a member's account list, bulk balances, individual account balance and full account
-    detail per the DSB Consumer Data Standards Banking API v1.36.0. Unlike the public
-    Product Reference Data endpoints, these require the member to consent and authorize
-    an accredited data recipient (ADR) under the CDR sharing model - the bank does not
-    hand this data out unauthenticated. Endpoints - GET /banking/accounts, GET /banking/accounts/balances,
-    GET /banking/accounts/{accountId}/balance, GET /banking/accounts/{accountId}.
-- aid: gateway-bank:gateway-bank-cdr-transactions-api
-  name: Gateway Bank CDR Transactions API
+  - type: OpenAPI
+    url: openapi/gateway-bank-banking-account-balances-api-openapi.yml
+  - type: Documentation
+    url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: gateway-bank:gateway-bank-banking-account-direct-debits-api
+  name: Gateway Bank Banking Account Direct Debits API
+  description: Banking Account Direct Debit endpoints
+  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
   tags:
-  - CDR
-  - Open Banking
-  - Transactions
-  - Account Data
-  - Consumer Data Right
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
-  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Direct Debits
   properties:
-  - url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
-    type: APIReference
-  - url: openapi/gateway-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized Consumer Data Right (CDR) endpoints returning a member's
-    transactions for a nominated account and full detail for a single transaction, per
-    the DSB Consumer Data Standards Banking API v1.36.0. Access requires member consent
-    and authorization through the CDR Accredited Data Recipient (ADR) model - this is
-    not public data. Endpoints - GET /banking/accounts/{accountId}/transactions and GET
-    /banking/accounts/{accountId}/transactions/{transactionId}, supporting date-range,
-    amount and text filtering as defined by the standard.
-- aid: gateway-bank:gateway-bank-cdr-direct-debits-scheduled-payments-api
-  name: Gateway Bank CDR Direct Debits & Scheduled Payments API
+  - type: OpenAPI
+    url: openapi/gateway-bank-banking-account-direct-debits-api-openapi.yml
+  - type: Documentation
+    url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: gateway-bank:gateway-bank-banking-account-scheduled-payments-api
+  name: Gateway Bank Banking Account Scheduled Payments API
+  description: Banking Account Scheduled Payment endpoints
+  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
   tags:
-  - CDR
-  - Open Banking
-  - Direct Debits
-  - Scheduled Payments
-  - Consumer Data Right
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
-  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Scheduled Payments
   properties:
-  - url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
-    type: APIReference
-  - url: openapi/gateway-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized Consumer Data Right (CDR) endpoints exposing the direct
-    debit authorisations and scheduled (future-dated / recurring) payments configured
-    against a member's accounts, per the DSB Consumer Data Standards Banking API v1.36.0.
-    These require member consent and authorization via the CDR Accredited Data Recipient
-    (ADR) model and are not public. Endpoints - GET /banking/accounts/{accountId}/direct-debits,
-    GET /banking/accounts/direct-debits, GET /banking/accounts/{accountId}/payments/scheduled
-    and GET /banking/payments/scheduled.
-- aid: gateway-bank:gateway-bank-cdr-payees-api
-  name: Gateway Bank CDR Payees API
+  - type: OpenAPI
+    url: openapi/gateway-bank-banking-account-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: gateway-bank:gateway-bank-banking-account-transactions-api
+  name: Gateway Bank Banking Account Transactions API
+  description: Banking Account Transaction endpoints
+  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
   tags:
-  - CDR
-  - Open Banking
-  - Payees
-  - Account Data
-  - Consumer Data Right
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
-  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1/banking/payees
+  - Banking Account Transactions
   properties:
-  - url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
-    type: APIReference
-  - url: openapi/gateway-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized Consumer Data Right (CDR) endpoints returning the saved
-    payees a member has established for making payments, plus full detail for an individual
-    payee, per the DSB Consumer Data Standards Banking API v1.36.0. Access is gated behind
-    member consent and authorization through the CDR Accredited Data Recipient (ADR)
-    model - payee data is never served unauthenticated. Endpoints - GET /banking/payees
-    and GET /banking/payees/{payeeId}.
+  - type: OpenAPI
+    url: openapi/gateway-bank-banking-account-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: gateway-bank:gateway-bank-banking-accounts-api
+  name: Gateway Bank Banking Accounts API
+  description: Banking Account endpoints
+  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
+  tags:
+  - Banking Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/gateway-bank-banking-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: gateway-bank:gateway-bank-banking-payees-api
+  name: Gateway Bank Banking Payees API
+  description: Banking Payee endpoints
+  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
+  tags:
+  - Banking Payees
+  properties:
+  - type: OpenAPI
+    url: openapi/gateway-bank-banking-payees-api-openapi.yml
+  - type: Documentation
+    url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: gateway-bank:gateway-bank-banking-products-api
+  name: Gateway Bank Banking Products API
+  description: Banking Product endpoints
+  humanURL: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  baseURL: https://public.cdr-api.gatewaybank.com.au/cds-au/v1
+  tags:
+  - Banking Products
+  properties:
+  - type: OpenAPI
+    url: openapi/gateway-bank-banking-products-api-openapi.yml
+  - type: Documentation
+    url: https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
 common:
 - type: AgenticAccess
   url: agentic-access/gateway-bank-agentic-access.yml
