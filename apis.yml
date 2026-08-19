@@ -41,7 +41,7 @@ tags:
 - Product Reference Data
 created: '2026-07-20'
 modified: '2026-07-21'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: gateway-bank:gateway-bank-banking-account-balances-api
   name: Gateway Bank Banking Account Balances API
