@@ -16,6 +16,18 @@ description: Gateway Bank Ltd is a 100% customer-owned Australian mutual bank he
   registered CDR public base URI is https://public.cdr-api.gatewaybank.com.au. As a
   small customer-owned mutual, Gateway Bank does not operate a broader self-serve
   first-party developer portal beyond these CDR obligations.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
