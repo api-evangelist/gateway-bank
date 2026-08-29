@@ -217,6 +217,9 @@ apis:
   - type: APIReference
     url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
 common:
+- type: CapabilityMap
+  url: capabilities/gateway-bank-capability-edges.yml
+  name: Gateway Bank Business Capability Map
 - type: AgenticAccess
   url: agentic-access/gateway-bank-agentic-access.yml
 - type: DomainSecurity
