@@ -42,6 +42,16 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/gateway-bank.png
 tags:
+- Finance
+- Banks
+- Open Banking
+- CDR
+- Consumer Banking
+- Mutual Bank
+- Customer Owned
+- Australia
+- Product Reference Data
+tags_raw:
 - Financial
 - Banks
 - Open Banking
