@@ -1,4 +1,4 @@
-# Gateway Bank (gateway-bank)
+# Gateway Bank
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,57 +64,129 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Gateway Bank Ltd is a 100% customer-owned Australian mutual bank headquartered in Sydney, New South Wales. Founded in 1955 as Gateway Credit Union and rebranded to Gateway Bank in 2018, it is an APRA-regulated Authorised Deposit-taking Institution (ADI) serving more than 30,000 members with over one billion dollars in assets. As an active ADI it is a designated data holder under Australia's Consumer Data Right (CDR / Open Banking) and exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the Data Standards Body Consumer Data Standards.
+Gateway Bank Ltd is a 100% customer-owned Australian mutual bank headquartered in Sydney, New South Wales. Founded in 1955 as Gateway Credit Union and rebranded to Gateway Bank in 2018, it is an APRA-regulated Authorised Deposit-taking Institution (ADI) serving more than 30,000 members with over one billion dollars in assets across transaction and savings accounts, home, personal and car loans, reverse and commercial mortgages, term deposits and Visa debit cards. As an active ADI, Gateway Bank is a designated data holder under Australia's Consumer Data Right (CDR / Open Banking) and implements the full Data Standards Body (DSB) Consumer Data Standards Banking API surface - a public, unauthenticated Product Reference Data (PRD) API plus the consumer-authorized Accounts, Balances, Transactions, Direct Debits, Scheduled Payments and Payees endpoints accessed through the CDR Accredited Data Recipient model. Its registered CDR public base URI is https://public.cdr-api.gatewaybank.com.au. As a small customer-owned mutual, Gateway Bank does not operate a broader self-serve first-party developer portal beyond these CDR obligations.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/gateway-bank/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/gateway-bank/refs/heads/main/apis.yml)
+**Areas:** Finance · Banks · Open Banking · CDR · Consumer Banking · Mutual Bank · Customer Owned · Australia · Product Reference Data
 
-## Tags
+## Gateway Bank on APIs.io
 
-- Financial
-- Banks
-- Open Banking
-- CDR
-- Consumer Banking
-- Mutual Bank
-- Customer Owned
-- Australia
-- Product Reference Data
+Everything profiled for Gateway Bank is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/gateway-bank/](https://apis.io/providers/gateway-bank/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-07-20
-- **Modified:** 2026-07-20
+- [Gateway Bank Banking Account Balances API](https://apis.io/apis/gateway-bank/gateway-bank-banking-account-balances-api/) — Banking Account Balance endpoints
+- [Gateway Bank Banking Account Direct Debits API](https://apis.io/apis/gateway-bank/gateway-bank-banking-account-direct-debits-api/) — Banking Account Direct Debit endpoints
+- [Gateway Bank Banking Account Scheduled Payments API](https://apis.io/apis/gateway-bank/gateway-bank-banking-account-scheduled-payments-api/) — Banking Account Scheduled Payment endpoints
+- [Gateway Bank Banking Account Transactions API](https://apis.io/apis/gateway-bank/gateway-bank-banking-account-transactions-api/) — Banking Account Transaction endpoints
+- [Gateway Bank Banking Accounts API](https://apis.io/apis/gateway-bank/gateway-bank-banking-accounts-api/) — Banking Account endpoints
+- [Gateway Bank Banking Payees API](https://apis.io/apis/gateway-bank/gateway-bank-banking-payees-api/) — Banking Payee endpoints
+- [Gateway Bank Banking Products API](https://apis.io/apis/gateway-bank/gateway-bank-banking-products-api/) — Banking Product endpoints
 
-## APIs
+### Published properties
 
-### Gateway Bank CDR Product Reference Data API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Public, unauthenticated Consumer Data Right (CDR) Product Reference Data endpoints exposing Gateway Bank's retail banking products - transaction and savings accounts, residential mortgages, personal and car loans, and term deposits - in the machine-readable format defined by the DSB Consumer Data Standards. Confirmed live on 2026-07-20 returning HTTP 200 with x-v 5 and 147 products across 30 pages from `GET /banking/products`; per-product detail is available at `GET /banking/products/{productId}`.
+#### MCP servers (1)
 
-- **Human URL:** [https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/](https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/)
-- **Base URL:** `https://public.cdr-api.gatewaybank.com.au/cds-au/v1`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [gateway-bank-cdr-prd](https://apis.io/servers/gateway-bank/gateway-bank-cdr-prd/)
 
-- CDR
-- Open Banking
-- Product Reference Data
-- Banking Products
-- Consumer Data Right
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/)
-- [API Reference](https://consumerdatastandardsaustralia.github.io/standards/#get-products)
-- [OpenAPI](openapi/gateway-bank-cds-banking-products-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Gateway Bank Agentic Access](https://apis.io/agentic-access/gateway-bank/gateway-bank-agentic-access/)
 
-## Common Properties
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [CDR Banking Banking Account Balances API](https://apis.io/collections/gateway-bank/open-gateway-bank-banking-account-balances-api/)
+- [CDR Banking Banking Account Balances Banking Account Direct Debits API](https://apis.io/collections/gateway-bank/open-gateway-bank-banking-account-direct-debits-api/)
+- [CDR Banking Banking Account Balances Banking Account Scheduled Payments API](https://apis.io/collections/gateway-bank/open-gateway-bank-banking-account-scheduled-payments-api/)
+- [CDR Banking Banking Account Balances Banking Account Transactions API](https://apis.io/collections/gateway-bank/open-gateway-bank-banking-account-transactions-api/)
+- [CDR Banking Banking Account Balances Banking Accounts API](https://apis.io/collections/gateway-bank/open-gateway-bank-banking-accounts-api/)
+- [CDR Banking Banking Account Balances Banking Payees API](https://apis.io/collections/gateway-bank/open-gateway-bank-banking-payees-api/)
+- [CDR Banking Banking Account Balances Banking Products API](https://apis.io/collections/gateway-bank/open-gateway-bank-banking-products-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Gateway Bank Cds Banking Products Overlay](https://apis.io/overlays/gateway-bank/gateway-bank-cds-banking-products-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Gateway Bank Authentication](https://apis.io/security/gateway-bank/gateway-bank-authentication/)
+- [Gateway Bank Domain Security](https://apis.io/security/gateway-bank/gateway-bank-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Gateway Bank Scopes](https://apis.io/scopes/gateway-bank/gateway-bank-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.gatewaybank.com.au/)
 - [Documentation](https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/)
-- [LinkedIn](https://au.linkedin.com/company/gateway-bank-ltd)
+- [Compliance](https://www.gatewaybank.com.au/important-information/consumer-data-right-cdr/)
+- [Terms of service](https://www.gatewaybank.com.au/important-information/terms-of-use/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 34.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 44.7 |
+| Contract governance | 18.2 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 30.4 |
+| Access clarity | 18.4 |
+
+**Agent readiness 32.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 44.9** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/gateway-bank/](https://apis.io/providers/gateway-bank/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Gateway Bank: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/gateway-bank/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
